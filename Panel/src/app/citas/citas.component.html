@@ -1,0 +1,85 @@
+<form action="">
+    <div>
+        <label for="">Paciente</label>
+        <select name="" id="" #persona_id>
+            @for(item of listaPacientes; track $index){ 
+                <option value="{{item.id}}">{{item.nombre}}</option>
+              }
+        </select>
+    </div><br>
+    <div>
+        <form action="">
+            <label for="">Especialista</label>
+            <select  name="" id="" #op>
+                @for(item of listaEspecialidad; track $index){ 
+                    <option value="{{item.especialidad}}">{{item.especialidad}}</option>
+                    <!-- <option value="{{item.id}}">{{item.nombre}}</option> -->
+                  }
+            </select>
+            <br>
+            <br>
+            <button type="button" (click)="verificar(op)">Cargar Doctores</button>
+        </form>
+
+    </div>
+    <br>
+    <div>
+        <label for="">Doctor</label>
+        <select  name="" id="" #medico>
+            @for(item of listaDoc; track $index){ 
+                @if(elejido == item.especialidad){
+                    <option value="{{item.id}}">{{item.nombre}}</option>
+                    <!-- <option value="{{item.id}}">{{item.nombre}}</option> -->
+                }
+                
+              }
+        </select>
+    </div><br>
+    <div>
+        <label for="">Fecha de la cita</label>
+        <input type="date" #fechaHConsulta>
+    </div>
+
+    <br>
+    <button type="button" (click)="createCitas(persona_id, medico, fechaHConsulta)">Crear cita</button>
+</form>
+
+
+<br>
+<br>
+<table border="1" style="width: 50%;">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Paciente</th>
+            <th>Doctor</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(item of listaCitas; track $index){ 
+                 <tr>
+            
+                <td>{{item.id}}</td>
+
+                @for(i of listaPacientes;track $index){
+                    @if(item.persona_id == i.id ){
+                        <td>{{i.nombre}}</td>
+                    }
+                    
+                }
+
+                @for(i of listaDoc;track $index){
+                    @if(item.medico == i.id ){
+                        <td>{{i.nombre}}</td>
+                    }
+                    
+                }
+                
+                <td>{{item.fechaHConsulta}}</td>
+
+            </tr>
+       }
+      
+    </tbody>
+</table>

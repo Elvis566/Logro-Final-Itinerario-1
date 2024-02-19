@@ -1,0 +1,38 @@
+<form action="" id="miFormulario">
+    <div>
+        <label for="">Nombre</label>
+        <input type="text" required #nombre>
+    </div><br>
+    <div>
+        <label for="">Apellido</label>
+        <input type="text" required #apellido>
+    </div><br>
+    <div>
+        <label for="">DNI</label>
+        <input type="text" required #DNI>
+    </div><br>
+    <div>
+        <label for="">Telefono</label>
+        <input type="text" required #telefono>
+    </div><br>
+    <div>
+        <label for="">Correo</label>
+        <input type="text" required #email>
+    </div><br>
+    <div>
+        <label for="">Especialidad</label>
+        <input type="text" #especialidad>
+    </div><br>
+    <div>
+        <label for="">Tipo</label>
+        <select name="" id="" #tipos_personas>
+            <option value="">Seleccione...</option>
+            <option value="1">Paciente</option>
+            <option value="2">Doctor</option>
+        </select>
+    </div><br>
+    <button type="button" (click)="createPersonas(nombre, apellido, DNI, telefono, email,especialidad, tipos_personas)" (click)="limpiarFormulario()">Guardar</button>
+
+</form>
+
+
